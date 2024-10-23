@@ -15,7 +15,9 @@ class HashMap {
     return hashCode;
   }
 
-  set(key, value) {}
+  set(key, value) {
+
+  }
 
   get(key) {}
 
@@ -33,3 +35,6 @@ class HashMap {
 
   entries() {}
 }
+
+
+export default HashMap;
