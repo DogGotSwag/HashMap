@@ -28,17 +28,13 @@ class HashMap {
     if (bucket === undefined) {
       this.#array[index] = new LinkedList();
       this.#array[index].append(value, key);
-      console.log(this.#array[index].toString());
-      
     } else {
       if (this.#array[index].containsKey(key)) {
-        let existingNodeIndex = this.#array[index].findKey(key)
+        let existingNodeIndex = this.#array[index].findKey(key);
         this.#array[index].removeAt(existingNodeIndex);
-        this.#array[index].append(value,key);
-        console.log(this.#array[index].toString());
+        this.#array[index].append(value, key);
       } else {
         this.#array[index].append(value, key);
-        console.log(this.#array[index].toString());
       }
     }
   }
