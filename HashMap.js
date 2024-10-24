@@ -18,7 +18,7 @@ class HashMap {
   }
 
   set(key, value) {
-    // let index = this.hash(key);
+    let index = this.hash(key);
     if (index < 0 || index >= this.#bucketLength) {
       throw new Error("Trying to access index out of bound");
     }
@@ -28,11 +28,17 @@ class HashMap {
     if (bucket === undefined) {
       this.#array[index] = new LinkedList();
       this.#array[index].append(value, key);
+      console.log(this.#array[index].toString());
+      
     } else {
       if (this.#array[index].containsKey(key)) {
-        console.log("Key already there");
+        let existingNodeIndex = this.#array[index].findKey(key)
+        this.#array[index].removeAt(existingNodeIndex);
+        this.#array[index].append(value,key);
+        console.log(this.#array[index].toString());
       } else {
         this.#array[index].append(value, key);
+        console.log(this.#array[index].toString());
       }
     }
   }
