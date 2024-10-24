@@ -1,4 +1,4 @@
-import LinkedList from './LinkedList.js'
+import LinkedList from "./LinkedList.js";
 
 class HashMap {
   constructor() {}
@@ -25,11 +25,9 @@ class HashMap {
       let bucket = this.#array[index];
       if (bucket === undefined) {
         this.#array[index] = new LinkedList();
-        this.#array[index].append(value,key);
-        this.#array[index].append(value,key);
-        this.#array[index].prepend("Not gay",key);
-        console.log(this.#array[index].toString());
-        
+        this.#array[index].append(value, key);
+      } else {
+        this.#array[index].append(value, key);
       }
     }
   }
