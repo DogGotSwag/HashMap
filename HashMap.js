@@ -1,3 +1,5 @@
+import LinkedList from './LinkedList.js'
+
 class HashMap {
   constructor() {}
   #array = [];
@@ -22,7 +24,7 @@ class HashMap {
     } else {
       let bucket = this.#array[index];
       if (bucket === undefined) {
-        
+        this.#array[index] = new LinkedList();
       }
     }
   }
