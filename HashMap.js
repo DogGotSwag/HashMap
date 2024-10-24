@@ -75,7 +75,15 @@ class HashMap {
     }
   }
 
-  length() {}
+  length() {
+    let size = 0;
+    for(let i = 0;i < this.#bucketLength; i++){
+      let bucket = this.#array[i];
+      if(bucket === undefined) continue;
+      size += bucket.size();
+    }
+    return size;
+  }
 
   clear() {}
 
