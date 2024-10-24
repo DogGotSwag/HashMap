@@ -39,7 +39,18 @@ class HashMap {
     }
   }
 
-  get(key) {}
+  get(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.#bucketLength) {
+      throw new Error("Trying to access index out of bound");
+    }
+    let bucket = this.#array[index];
+    if ( (bucket !== undefined) && bucket.containsKey(key)) {
+      let existingNodeIndex = bucket.findKey(key);
+      return bucket.at(existingNodeIndex).data;
+    }
+    return null;
+  }
 
   has(key) {}
 
