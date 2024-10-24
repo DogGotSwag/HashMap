@@ -85,7 +85,11 @@ class HashMap {
     return size;
   }
 
-  clear() {}
+  clear() {
+    for(let i = 0;i < this.#bucketLength; i++){
+      this.#array[i] = undefined;
+    }
+  }
 
   keys() {}
 
