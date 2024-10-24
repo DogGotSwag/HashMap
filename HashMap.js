@@ -25,6 +25,7 @@ class HashMap {
       let bucket = this.#array[index];
       if (bucket === undefined) {
         this.#array[index] = new LinkedList();
+        this.#array[index].append(value);        
       }
     }
   }
