@@ -15,7 +15,7 @@ class LinkedList {
     }
   }
 
-  prepend(value,key) {
+  prepend(value, key) {
     if (this.#head === null) {
       this.#head = new Node(value, key);
       this.#tail = this.#head;
@@ -78,6 +78,15 @@ class LinkedList {
     let curr = this.#head;
     while (curr != null) {
       if (curr.data === value) return true;
+      curr = curr.next;
+    }
+    return false;
+  }
+
+  containsKey(key) {
+    let curr = this.#head;
+    while (curr != null) {
+      if (curr.key === key) return true;
       curr = curr.next;
     }
     return false;
