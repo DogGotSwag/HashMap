@@ -22,10 +22,7 @@ class HashMap {
     if (index < 0 || index >= this.#bucketLength) {
       throw new Error("Trying to access index out of bound");
     }
-
-    let bucket = this.#array[index];
-
-    if (bucket === undefined) {
+    if (this.#array[index] === undefined) {
       this.#array[index] = new LinkedList();
       this.#array[index].append(value, key);
     } else {
