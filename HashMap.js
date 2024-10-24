@@ -91,7 +91,15 @@ class HashMap {
     }
   }
 
-  keys() {}
+  keys() {
+    let arr = [];
+    for(let i = 0;i < this.#bucketLength; i++){
+      let bucket = this.#array[i];
+      if( bucket === undefined) continue;
+      arr = arr.concat(bucket.allKeys());
+    }
+    return arr;
+  }
 
   values() {}
 
