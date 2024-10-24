@@ -26,6 +26,8 @@ class HashMap {
       if (bucket === undefined) {
         this.#array[index] = new LinkedList();
         this.#array[index].append(value,key);
+        this.#array[index].append(value,key);
+        this.#array[index].prepend("Not gay",key);
         console.log(this.#array[index].toString());
         
       }

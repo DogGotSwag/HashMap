@@ -5,22 +5,22 @@ class LinkedList {
   #tail = null;
   constructor() {}
 
-  append(value) {
+  append(value, key) {
     if (this.#head === null) {
-      this.#head = new Node(value);
+      this.#head = new Node(value, key);
       this.#tail = this.#head;
     } else {
-      this.#tail.next = new Node(value);
+      this.#tail.next = new Node(value, key);
       this.#tail = this.#tail.next;
     }
   }
 
-  prepend(value) {
+  prepend(value,key) {
     if (this.#head === null) {
-      this.#head = new Node(value);
+      this.#head = new Node(value, key);
       this.#tail = this.#head;
     } else {
-      this.#head = new Node(value, this.#head);
+      this.#head = new Node(value, key, this.#head);
     }
   }
 
@@ -98,7 +98,7 @@ class LinkedList {
     let curr = this.#head;
     let string = "";
     while (curr != null) {
-      string += `( ${curr.data} ) => `;
+      string += `( ${curr.data}, ${curr.key} ) => `;
       curr = curr.next;
     }
     return `${string}null`;
