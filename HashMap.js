@@ -16,7 +16,15 @@ class HashMap {
   }
 
   set(key, value) {
-
+    let index = this.hash(key);
+    if (index < 0 || index >= this.#bucketLength) {
+      throw new Error("Trying to access index out of bound");
+    } else {
+      let bucket = this.#array[index];
+      if (bucket === undefined) {
+        
+      }
+    }
   }
 
   get(key) {}
@@ -35,6 +43,5 @@ class HashMap {
 
   entries() {}
 }
-
 
 export default HashMap;
