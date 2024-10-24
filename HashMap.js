@@ -42,16 +42,38 @@ class HashMap {
       throw new Error("Trying to access index out of bound");
     }
     let bucket = this.#array[index];
-    if ( (bucket !== undefined) && bucket.containsKey(key)) {
+    if (bucket !== undefined && bucket.containsKey(key)) {
       let existingNodeIndex = bucket.findKey(key);
       return bucket.at(existingNodeIndex).data;
     }
     return null;
   }
 
-  has(key) {}
+  has(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.#bucketLength) {
+      throw new Error("Trying to access index out of bound");
+    }
+    let bucket = this.#array[index];
+    if (bucket !== undefined && bucket.containsKey(key)) {
+      return true;
+    }
+    return false;
+  }
 
-  remove(key) {}
+  remove(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.#bucketLength) {
+      throw new Error("Trying to access index out of bound");
+    }
+    if (
+      this.#array[index] !== undefined &&
+      this.#array[index].containsKey(key)
+    ) {
+      let existingNodeIndex = this.#array[index].findKey(key);
+      this.#array[index].removeAt(existingNodeIndex);
+    }
+  }
 
   length() {}
 
