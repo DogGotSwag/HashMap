@@ -18,14 +18,19 @@ class HashMap {
   }
 
   set(key, value) {
-    let index = this.hash(key);
+    // let index = this.hash(key);
     if (index < 0 || index >= this.#bucketLength) {
       throw new Error("Trying to access index out of bound");
+    }
+
+    let bucket = this.#array[index];
+
+    if (bucket === undefined) {
+      this.#array[index] = new LinkedList();
+      this.#array[index].append(value, key);
     } else {
-      let bucket = this.#array[index];
-      if (bucket === undefined) {
-        this.#array[index] = new LinkedList();
-        this.#array[index].append(value, key);
+      if (this.#array[index].containsKey(key)) {
+        console.log("Key already there");
       } else {
         this.#array[index].append(value, key);
       }

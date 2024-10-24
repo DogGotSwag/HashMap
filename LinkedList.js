@@ -102,6 +102,18 @@ class LinkedList {
     }
     return null;
   }
+  findKey(value) {
+    let curr = this.#head;
+    let index = 0;
+    while (curr != null) {
+      if (curr.key === value) return index;
+      index += 1;
+      curr = curr.next;
+    }
+    return null;
+  }
+
+
 
   toString() {
     let curr = this.#head;
