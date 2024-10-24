@@ -113,8 +113,6 @@ class LinkedList {
     return null;
   }
 
-
-
   toString() {
     let curr = this.#head;
     let string = "";
@@ -123,6 +121,16 @@ class LinkedList {
       curr = curr.next;
     }
     return `${string}null`;
+  }
+
+  allKeys() {
+    let curr = this.#head;
+    let arr = [];
+    while (curr != null) {
+      arr = arr.concat([curr.key]);
+      curr = curr.next;
+    }
+    return arr;
   }
 
   insertAt(value, index) {
