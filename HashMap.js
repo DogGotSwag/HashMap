@@ -101,7 +101,15 @@ class HashMap {
     return arr;
   }
 
-  values() {}
+  values() {
+    let arr = [];
+    for (let i = 0; i < this.#bucketLength; i++) {
+      let bucket = this.#array[i];
+      if (bucket === undefined) continue;
+      arr = arr.concat(bucket.allValues());
+    }
+    return arr;
+  }
 
   entries() {
     let arr = [];
