@@ -1,14 +1,39 @@
 import LinkedList from "./LinkedList.js";
 
 function isPrime(num) {
-  for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
-    if (num % i === 0) return false;
+  if (num <= 1) {
+    return false;
   }
-  return num > 1;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
-function isPowerOfTwo(num) {
-  return num % 2 === 0 ? true : false;
+function checkPowerProximity(num) {
+  let powerOf = 1;
+  let currPowerOfTwo = 2 ** powerOf;
+  let prevPowerOfTwo;
+  while (currPowerOfTwo < num) {
+    powerOf += 1;
+    [prevPowerOfTwo, currPowerOfTwo] = [currPowerOfTwo, 2 ** powerOf];
+  }
+
+  let distanceOne = Math.abs(currPowerOfTwo - num);
+  let distanceTwo = Math.abs(num - prevPowerOfTwo);
+
+  return distanceOne >= distanceTwo ? distanceTwo : distanceOne;
+}
+
+function nextPrime(num) {
+  let newNum = num * 2;
+  while (!isPrime(newNum) && checkPowerProximity(newNum) < 7) {
+    newNum += 1;
+  }
+  return newNum;
 }
 
 class HashMap {
@@ -16,13 +41,12 @@ class HashMap {
   #array = [];
   #bucketLength = 16;
   #loadFactor = 0.75;
-  growHash(){
+  growHash() {
     let entries = this.entries();
-    if( entries.length > Math.round(this.#bucketLength * this.#loadFactor)){
-      
+    if (entries.length > Math.round(this.#bucketLength * this.#loadFactor)) {
+      this.clear();
+      this.#bucketLength = nextPrime(this.#bucketLength);
     }
-    
-    
   }
 
   hash(key) {
