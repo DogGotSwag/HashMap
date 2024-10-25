@@ -183,6 +183,9 @@ class LinkedList {
         prev = curr;
         curr = curr.next;
       }
+      if (curr.next === null) {
+        this.#tail = prev;
+      }
       prev.next = curr.next;
     } catch (e) {
       return `ERROR: ${e.message}`;
