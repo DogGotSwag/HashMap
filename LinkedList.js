@@ -132,6 +132,15 @@ class LinkedList {
     }
     return arr;
   }
+  allValues() {
+    let curr = this.#head;
+    let arr = [];
+    while (curr != null) {
+      arr = arr.concat([curr.data]);
+      curr = curr.next;
+    }
+    return arr;
+  }
   allKeysWithValues() {
     let curr = this.#head;
     let arr = [];
