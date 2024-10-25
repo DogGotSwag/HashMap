@@ -15,6 +15,15 @@ class HashMap {
   constructor() {}
   #array = [];
   #bucketLength = 16;
+  #loadFactor = 0.75;
+  growHash(){
+    let entries = this.entries();
+    if( entries.length > Math.round(this.#bucketLength * this.#loadFactor)){
+      
+    }
+    
+    
+  }
 
   hash(key) {
     let hashCode = 0;
