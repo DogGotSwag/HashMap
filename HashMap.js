@@ -46,6 +46,9 @@ class HashMap {
     if (entries.length > Math.round(this.#bucketLength * this.#loadFactor)) {
       this.clear();
       this.#bucketLength = nextPrime(this.#bucketLength);
+      for(let i = 0; i < entries.length ;i++){
+        this.set(entries[i][0],entries[i][0]);
+      }
     }
   }
 
