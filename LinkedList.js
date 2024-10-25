@@ -132,11 +132,11 @@ class LinkedList {
     }
     return arr;
   }
-  allValues() {
+  allKeysWithValues() {
     let curr = this.#head;
     let arr = [];
     while (curr != null) {
-      arr = arr.concat([curr.key,curr.data]);
+      arr = arr.concat([curr.key, curr.data]);
       curr = curr.next;
     }
     return arr;
