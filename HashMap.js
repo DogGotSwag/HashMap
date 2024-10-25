@@ -1,5 +1,16 @@
 import LinkedList from "./LinkedList.js";
 
+function isPrime(num) {
+  for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+    if (num % i === 0) return false;
+  }
+  return num > 1;
+}
+
+function isPowerOfTwo(num) {
+  return num % 2 === 0 ? true : false;
+}
+
 class HashMap {
   constructor() {}
   #array = [];
