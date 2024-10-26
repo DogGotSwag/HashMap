@@ -46,8 +46,8 @@ class HashMap {
     if (entries.length > Math.round(this.#bucketLength * this.#loadFactor)) {
       this.clear();
       this.#bucketLength = nextPrime(this.#bucketLength);
-      for(let i = 0; i < entries.length ;i++){        
-        this.set(entries[i][0],entries[i][1]);
+      for (let i = 0; i < entries.length; i++) {
+        this.set(entries[i][0], entries[i][1]);
       }
     }
   }
@@ -64,7 +64,7 @@ class HashMap {
     return hashCode;
   }
 
-  set(key, value) {    
+  set(key, value) {
     let index = this.hash(key);
     if (index < 0 || index >= this.#bucketLength) {
       throw new Error("Trying to access index out of bound");
@@ -76,9 +76,8 @@ class HashMap {
       if (this.#array[index].containsKey(key)) {
         let existingNodeIndex = this.#array[index].findKey(key);
         // this.#array[index].removeAt(existingNodeIndex);
-        this.#array[index].append(value,key);
+        this.#array[index].append(value, key);
         console.log(this.#array[index].toString());
-
       } else {
         this.#array[index].append(value, key);
       }
@@ -172,12 +171,12 @@ class HashMap {
     return arr;
   }
 
-  toString(){
+  toString() {
     for (let i = 0; i < this.#bucketLength; i++) {
       let bucket = this.#array[i];
       if (bucket === undefined) console.log(`index ${i}:null`);
-      else{
-        console.log(`index ${i}:`)
+      else {
+        console.log(`index ${i}:`);
         console.log(bucket.allKeysWithValues());
       }
     }
